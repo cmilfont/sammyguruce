@@ -19,17 +19,16 @@ var ativarMenu = function(route) {
   $('#menu li a[href*="'+route+'"]').parent().addClass("active");
 };
 
-
 var renderPage = function(route, callback) {
   ativarMenu(route);
   if(callback) callback.call(this);
 };
 
- ;(function($) {
+;(function($) {
 
   var app = $.sammy('#corpo .container', function() {
     //this.use('GoogleAnalytics');
-    //this.use(Sammy.XTemplate);
+    this.use(Sammy.XTemplate);
     
     this.get('#!/home', function() {
       this.partial('views/home.html').then(function() {
@@ -44,20 +43,21 @@ var renderPage = function(route, callback) {
     });
 
     this.get('#!/tracking', function() {
-      this.partial('views/local.html').then(function() {
-      	renderPage("#!/local");
+      this.partial('views/tracking.html').then(function() {
+      	renderPage("#!/tracking");
       });
     });
     
     this.get('#!/templates', function() {
-      this.partial('views/local.html').then(function() {
-        renderPage("#!/local");
-      });
+      this.load('palestrantes', {cache: true, json:true})
+          .partial('views/templates.html').then(function() {
+            renderPage("#!/templates");
+          });
     });
 
     this.get('#!/indexar', function() {
-      this.partial('views/local.html').then(function() {
-        renderPage("#!/local");
+      this.partial('views/indexar.html').then(function() {
+        renderPage("#!/indexar");
       });
     });
     

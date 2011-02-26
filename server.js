@@ -9,40 +9,29 @@ app.set('view engine', 'ejs');
 
 app.use(express.bodyDecoder());
 app.use(express.cookieDecoder());
-app.use(express.session({ secret: 'keyboard cat' }));
+app.use(express.session({ secret: 'braziljs' }));
 
 var palestrantes = [
   {
-  id: 1
-  , name: "Christiano Milfont"
-  , photo: "http://pt.gravatar.com/userimage/972433/b60fc161487aed1f8559130a7aa959c5.jpeg"
-  , twitter: "@cmilfont"
-  , site: "http://www.milfont.org"
+    id: 1
+    , name: "Christiano Milfont"
+    , photo: "images/cmilfont.jpg"
+    , twitter: "@cmilfont"
+    , site: "http://www.milfont.org"
+  }
+  ,
+  {
+    id: 1
+    , name: "Henrique Soares"
+    , photo: "images/gogo.jpg"
+    , twitter: "@henriquegogo"
+    , site: "http://www.gogs.com.br"
   }
 ];
 
-var agenda = [
-	{horario: "07H00", palestra: {tema: "Tema a confirmar", palestrantes:palestrantes }}
-  ,{
-    horario: "13H00"
-    , palestra: {
-    tema: "Lightning Talks - 10min"
-    , lightning: [{horario: "13H00", palestra: {tema: "Tema a confirmar", palestrantes:palestrantes}}]
-  }
-}
-];
-
-app.get('/', function(req, res){
-	
-  //console.log(req.query);
-
+app.get('/', function(req, res) {
   res.end();
 });
-
-app.get('/agenda', function(req, res){ 
-  res.send(JSON.stringify(agenda));
-});
-
 
 app.get('/palestrantes', function(req, res){ 
   res.send(JSON.stringify(palestrantes));
