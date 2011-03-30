@@ -30,7 +30,8 @@ var palestrantes = [
 ];
 
 app.get('/', function(req, res) {
-  res.end();
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
 });
 
 app.get('/palestrantes', function(req, res){ 
@@ -43,3 +44,10 @@ app.use(express.staticProvider(__dirname));
 
 app.listen(8000);
 console.log('Express started on port 8000');
+/*
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(80, "64.30.137.193");
+*/
