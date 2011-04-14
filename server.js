@@ -88,8 +88,8 @@ app.use(express.errorHandler({ showStack: true }));
 app.use(express.staticProvider(__dirname));
 
 
-app.listen(8000);
-//app.listen(80, "64.30.137.193");
+//app.listen(8000);
+app.listen(80, "64.30.137.193");
 
 /*
 var http = require('http');
