@@ -49,8 +49,12 @@ app.get('/', function(req, res) {
   res.end('Hello World\n');
 });
 
-app.get('/palestrantes', function(req, res){ 
-  res.send(JSON.stringify(palestrantes));
+app.get('/palestrantes', function(req, res){
+  var root = {
+    palestrantes: palestrantes,
+    total: palestrantes.length
+  }
+  res.send(JSON.stringify(root));
 });
 
 app.get('/palestrantes/:id', function(req, res){
@@ -86,8 +90,8 @@ app.use(express.errorHandler({ showStack: true }));
 app.use(express.staticProvider(__dirname));
 
 
-//app.listen(8000);
-app.listen(80, "64.30.137.193");
+app.listen(8000);
+//app.listen(80, "64.30.137.193");
 
 /*
 var http = require('http');
