@@ -63,12 +63,10 @@ app.get('/palestrantes/:id', function(req, res){
 
 app.post('/palestrantes', function(req, res){
   var json = JSON.parse(req.body["json"]);
-  console.log(json);
   var palestrante = new Palestrante(json);
   palestrante.save(function (err) {
     if(err) console.log("Error: " + err);
   });
-  console.log(palestrante);
   res.send(JSON.stringify(palestrante));
 });
 
